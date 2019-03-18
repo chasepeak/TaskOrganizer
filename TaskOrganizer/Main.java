@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.time.MonthDay;
+import java.util.Scanner;
 
 public class Main {
 
@@ -91,10 +91,10 @@ public class Main {
         System.out.println();
         System.out.println("Format: <identifier> <item> ...");
         System.out.println();
-        System.out.println("add    course <course name>");
-        System.out.println("remove course <course name>");
-        System.out.println("add    assignment <assignment name> due <date> to <course name>");
-        System.out.println("remove assignment <assignment name> from <course name>");
+        System.out.println("add    course <course>");
+        System.out.println("remove course <course>");
+        System.out.println("add    assignment <assignment> due <date> to <course>");
+        System.out.println("remove assignment <assignment> from <course>");
         System.out.println("display <courses/assignments/all>");
         System.out.println("quit");
         System.out.println();
