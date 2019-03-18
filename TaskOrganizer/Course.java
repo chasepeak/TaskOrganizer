@@ -53,7 +53,7 @@ public final class Course {
 
     @Override
     public String toString() {
-        return department + " " + Integer.toString(courseNumber);
+        return department + " " + courseNumber;
     }
 
     @Override
