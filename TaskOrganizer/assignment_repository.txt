@@ -1,2 +1,2 @@
-MATH 451 Homework5 0
-STAT 305 Investigation1 60
+MATH 451 Homework5 --3-12
+STAT 305 Investigation1 --3-18

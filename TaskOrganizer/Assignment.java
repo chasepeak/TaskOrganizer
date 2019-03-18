@@ -1,12 +1,12 @@
-import java.util.Date;
 import java.util.Objects;
+import java.time.MonthDay;
 
 public final class Assignment{
 
     private final String name;
-    private Date dueDate;
+    private MonthDay dueDate;
 
-    public Assignment(String name, Date dueDate) {
+    public Assignment(String name, MonthDay dueDate) {
         this.name = name;
         this.dueDate = dueDate;
     }
@@ -15,11 +15,11 @@ public final class Assignment{
         return name;
     }
 
-    public Date getDueDate() {
+    public MonthDay getDueDate() {
         return dueDate;
     }
 
-    public void changeDueDate(Date newDate) {
+    public void changeDueDate(MonthDay newDate) {
         dueDate = newDate;
     }
 
@@ -32,8 +32,7 @@ public final class Assignment{
     public boolean equals(Object other) {
         if (other instanceof Assignment) {
             Assignment a = (Assignment) other;
-            return a.getName().equals(name) && 
-                    a.getDueDate().equals(dueDate);
+            return a.getName().equals(name); 
         }
         else {
             return false;
@@ -42,6 +41,6 @@ public final class Assignment{
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, dueDate);
+        return Objects.hash(name);
     }
 }

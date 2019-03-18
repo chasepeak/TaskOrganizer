@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class Workspace {
 
+    //consider other data structures (hash set maybe)
     private ArrayList<Course> courses;
 
     public Workspace() {
