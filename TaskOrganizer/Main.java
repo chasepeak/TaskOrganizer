@@ -18,11 +18,15 @@ public class Main {
 
         while(!commands[0].equals("quit")) {
             try {
-                if (commands[1].equals("course")) {//deal with courses
-                    Course c = new Course(commands[2], Integer.parseInt(commands[3]));
+                if (commands[1].equals("course")) {//organize courses
+                    Course c = new Course(commands[2], commands[3]);
+
+                    //only adds the course if it is not already present
                     if (commands[0].equals("add") && !w.getCourses().contains(c)) {
                         w.addCourse(c);
                     }
+
+                    //only removes the course if it is present
                     else if (commands[0].equals("remove") && w.getCourses().contains(c)) {
                         w.removeCourse(c);
                     }
@@ -30,11 +34,26 @@ public class Main {
                         throw new Exception();
                     }
                 }
-                else if (commands[1].equals("assignment")) { //deal with assignments
+                else if (commands[0].equals("display")) { //display data
+                    switch(commands[1]){
+                        case "courses":
+                            w.printCourses();
+                            break;
+                        case "assignments":
+                            w.printAssignments();
+                            break;
+                        case "all":
+                            w.printAll();
+                            break;
+                        default:
+                            throw new Exception();
+                    }
+                }
+                else if (commands[1].equals("assignment")) { //organize assignments
                     if (commands[0].equals("add") && commands[3].equals("due")
                         && commands[5].equals("to")) {
-                        Course c = new Course(commands[6], Integer.parseInt(commands[7]));
-                        String[] fullDate = commands[4].split("-");
+                        Course c = new Course(commands[6], commands[7]);
+                        String[] fullDate = commands[4].split("/");
                         MonthDay date = MonthDay.of(Integer.parseInt(fullDate[0]),
                                         Integer.parseInt(fullDate[1]));
                         Assignment a = new Assignment(commands[2], date);
@@ -53,21 +72,6 @@ public class Main {
                     }
                     else {
                         throw new Exception();
-                    }
-                }
-                else if (commands[0].equals("display")) { //display
-                    switch(commands[1]){
-                        case "courses":
-                            w.printCourses();
-                            break;
-                        case "assignments":
-                            w.printAssignments();
-                            break;
-                        case "all":
-                            w.printAll();
-                            break;
-                        default:
-                            throw new Exception();
                     }
                 }
                 else {
@@ -100,7 +104,7 @@ public class Main {
         System.out.println();
         System.out.println("Examples:");
         System.out.println("    add course MATH 452");
-        System.out.println("    add assignment Homework5 due 03-13 to MATH 451");
+        System.out.println("    add assignment Homework5 due 03/13 to MATH 451");
         System.out.println("    display assignments");
     }
 }

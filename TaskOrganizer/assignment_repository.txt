@@ -1,3 +1,2 @@
-MATH 452 homework1 --04-10 
-CPE 357 assignment1 --04-10 
-STAT 302 assignment1 --04-09 
+MATH 452 : homework1 is due on 9/11 
+CPE 357 : homework1 is due on 3/12 

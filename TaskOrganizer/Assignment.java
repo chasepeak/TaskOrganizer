@@ -4,22 +4,63 @@ import java.time.MonthDay;
 public final class Assignment{
 
     private final String name;
-    private MonthDay dueDate;
+    private AssignmentDate dueDate;
 
     public Assignment(String name, MonthDay dueDate) {
         this.name = name;
-        this.dueDate = dueDate;
+        this.dueDate = new AssignmentDate(dueDate);
+    }
+
+    public class AssignmentDate {
+        private String day;
+        private String month;
+
+        public AssignmentDate(MonthDay date) {
+            this.day = Integer.toString(date.getDayOfMonth());
+            this.month = Integer.toString(date.getMonthValue());
+        }
+
+        public String getDay() {
+            return day;
+        }
+
+        public String getMonth() {
+            return month;
+        }
+
+        @Override
+        public String toString() {
+            return month + "/" + day;
+        }
+
+        public int compareTo(AssignmentDate date) {
+            int result = month.compareTo(date.getMonth());
+            //if the months are equal
+            if (result == 0) {
+                return day.compareTo(date.getDay());
+            }
+            return result;
+        }
+
+        @Override
+        public boolean equals(Object other) {
+            if (other instanceof AssignmentDate) {
+                AssignmentDate date = (AssignmentDate) other;
+                return day.equals(date.getDay()) && month.equals(date.getMonth());
+            }
+            return false;
+        }
     }
 
     public String getName() {
         return name;
     }
 
-    public MonthDay getDueDate() {
+    public AssignmentDate getDueDate() {
         return dueDate;
     }
 
-    public void changeDueDate(MonthDay newDate) {
+    public void changeDueDate(AssignmentDate newDate) {
         dueDate = newDate;
     }
 
@@ -32,7 +73,7 @@ public final class Assignment{
     public boolean equals(Object other) {
         if (other instanceof Assignment) {
             Assignment a = (Assignment) other;
-            return a.getName().equals(name); 
+            return name.equals(a.getName()); 
         }
         else {
             return false;
